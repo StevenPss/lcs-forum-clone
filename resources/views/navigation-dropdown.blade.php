@@ -21,7 +21,7 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('series')">
                         {{ __('Series') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('discussions')">
+                    <x-jet-nav-link href="{{ route('discussion.index') }}" :active="request()->routeIs('discussion.index')">
                         {{ __('Discussions') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('podcast')">
@@ -138,7 +138,7 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('series')">
                 {{ __('Series') }}
             </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('discussions')">
+            <x-jet-responsive-nav-link href="{{ route('discussion.index') }}" :active="request()->routeIs('discussion.index')">
                 {{ __('Discussions') }}
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('podcast')">

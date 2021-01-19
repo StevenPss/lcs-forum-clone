@@ -4,7 +4,7 @@
         <!--sidebar-->
         <div class="hidden lg:block lg:sticky mr-9 lg:items-start flex-none" style="min-width:200px; top:40px;">
             <div class="lg:sticky text-center">
-                <a id="js-new-discussion-button" href="#" class="bg-blue-400 inline-flex justify-center w-full rounded-xl px-4 py-2 text-sm font-bold text-white hover:bg-blue-500 mb-8 uppercase" style="box-shadow: rgb(215, 232, 253) 0px 4px 10px 1px;">
+                <a id="js-new-discussion-button" href="{{ route('discussion.create') }}" class="bg-blue-400 inline-flex justify-center w-full rounded-xl px-4 py-2 text-sm font-bold text-white hover:bg-blue-500 mb-8 uppercase" style="box-shadow: rgb(215, 232, 253) 0px 4px 10px 1px;">
                     New Discussion
                 </a>
                 <ul>
