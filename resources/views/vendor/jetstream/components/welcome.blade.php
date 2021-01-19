@@ -1,90 +1,412 @@
-<div class="p-6 sm:px-20 bg-white border-b border-gray-200">
-    <div>
-        <x-jet-application-logo class="block h-12 w-auto" />
+<div class="grid grid-cols-1 md:grid-cols-4">
+
+    <div class="flex flex-col flex-col-reverse md:flex-row mx-auto" style="max-width: 1070px;">
+        a
     </div>
 
-    <div class="mt-8 text-2xl">
-        Welcome to your Jetstream application!
+    <!--forum main-->
+    <div class="col-span-3">
+        <!--dropdown, views & search-->
+            <div class="flex justify-between mb-8">
+                <div>
+                    <div class="relative inline-block text-left">
+                        <div>
+                            <button id="btn-forum-latest" type="button" class="inline-flex justify-center w-full rounded-full border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="options-menu" aria-haspopup="true" aria-expanded="true">
+                                Latest
+                                <!-- Heroicon name: chevron-down -->
+                                <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <div id="forum-menu-latest" class="hidden origin-top-left absolute left-0 mt-2 w-52 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                            <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Latest</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Popular This Week</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Popular All Time</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Solved</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Unsolved</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">No Replies Yet</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative inline-block text-left">
+                        <div>
+                            <button id="btn-forum-all" type="button" class="ml-3 inline-flex justify-center w-full rounded-full border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="options-menu" aria-haspopup="true" aria-expanded="true">
+                                All
+                                <!-- Heroicon name: chevron-down -->
+                                <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
+                    
+                        <div id="forum-menu-all" class="hidden origin-top-left absolute left-0 mt-2 w-52 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                            <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                                
+
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Test</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="flex">
+
+                    <button id="btn-content-hide" class="focus:outline-none"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" class="mx-2"><g fill="#78909C" fill-rule="evenodd"><rect width="15" height="6" rx="2"></rect> <rect width="15" height="6" y="9" rx="2"></rect></g></svg></button>
+
+                    <button id="btn-content-show" class="ml-2 bg-gray-200 py-1 px-1 rounded focus:outline-none"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" class="mx-2"><g fill="#78909C" fill-rule="evenodd"><rect width="15" height="4" rx="2"></rect> <rect width="8" height="4" y="11" rx="2"></rect> <rect width="15" height="4" y="5.5" rx="2"></rect></g></svg></button>
+
+                    <form action="" autocomplete="off" class="ml-4 search-form bg-gray-200 rounded-full hidden md:block md:w-52 hidden">
+                        <input name="q" placeholder="Whatcha Looking For?" value="" class="bg-transparent px-5 pt-0 text-sm w-full h-full focus:outline-none">
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <!--conversation list-->
+            <div class="bg-white overflow-hidden sm:rounded-lg border border-gray-200 rounded-lg mb-2">
+                <!--conversation div-->
+                <div class="bg-gray-200 bg-opacity-25 ">
+                    <div class="p-6 border-gray-200">
+                        <div class="flex justify-between items-center">
+
+                            <div class="flex items-center">
+                                <img src="https://i.pinimg.com/280x280_RS/4f/e7/61/4fe7612bbe4b06d30f2182ba47a73403.jpg" class="w-13 h-12 rounded-lg" alt="">
+
+                                <div class="md:hidden ml-4 text-sm text-gray-600 leading-7 font-semibold">
+                                    <a href="#" class="hover:underline">StevenPss</a>
+                                </div>
+
+                                <div class="text-lg hidden ml-7 md:block text-gray-600 leading-7 font-semibold">
+                                    <a href="#" class="hover:underline" title="How to handle these API results?">How to handle these API results?</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="flex">
+                                    <ul class="flex items-center text-xs text-gray-400 mr-2 bg-gray-100 rounded-full px-2">
+                                        <li class="hidden md:block"><i class="fas fa-eye"></i> 25</li>
+                                        <li class="md:ml-4"><i class="fas fa-comment"></i> 50</li>
+                                    </ul>
+
+                                    <a href="#" class="uppercase text-orange-400 border-orange-400 font-bold rounded-full hover:bg-orange-400 md:px-5 px-4 py-1 border hover:text-white transition duration-300 ease-in-out" style="font-size: 0.63rem;">
+                                        Laravel
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md:ml-20 mt-8 md:mt-0">
+                            <div class="md:hidden text-lg text-gray-600 leading-7 font-semibold">
+                                <a href="#" class="hover:underline" title="How to handle these API results?">How to handle these API results?</a>
+                            </div>
+
+                            <div class="mt-2 md:mt-0 text-sm text-gray-500 content-toggle">
+                                Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                            </div>
+
+                            <a href="https://laracasts.com">
+                                <div class="mt-3 flex items-center text-gray-500 text-xs">
+                                    <a href="#" class="uppercase text-blue-500 font-bold hover:underline">StevenPss</a>
+                                    <p class="ml-1">replied <span class="font-bold hover:underline"><a href="#">2 minutes ago</a></span></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div><!--end of conversation div-->
+            </div><!--end of conversation list-->
+
+
+
+
+            <!--conversation list-->
+            <div class="bg-white overflow-hidden sm:rounded-lg border border-gray-200 rounded-lg mb-2">
+                <!--conversation div-->
+                <div class="bg-gray-200 bg-opacity-25 ">
+                    <div class="p-6 border-gray-200">
+                        <div class="flex justify-between items-center">
+
+                            <div class="flex items-center">
+                                <img src="https://i.pinimg.com/280x280_RS/4f/e7/61/4fe7612bbe4b06d30f2182ba47a73403.jpg" class="w-13 h-12 rounded-lg" alt="">
+
+                                <div class="md:hidden ml-4 text-sm text-gray-600 leading-7 font-semibold">
+                                    <a href="#" class="hover:underline">StevenPss</a>
+                                </div>
+
+                                <div class="text-lg hidden ml-7 md:block text-gray-600 leading-7 font-semibold">
+                                    <a href="#" class="hover:underline" title="How to handle these API results?">How to handle these API results?</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="flex">
+                                    <ul class="flex items-center text-xs text-gray-400 mr-2 bg-gray-100 rounded-full px-2">
+                                        <li class="hidden md:block"><i class="fas fa-eye"></i> 25</li>
+                                        <li class="md:ml-4"><i class="fas fa-comment"></i> 50</li>
+                                    </ul>
+
+                                    <a href="#" class="uppercase text-orange-400 border-orange-400 font-bold rounded-full hover:bg-orange-400 md:px-5 px-4 py-1 border hover:text-white transition duration-300 ease-in-out" style="font-size: 0.63rem;">
+                                        Laravel
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md:ml-20 mt-8 md:mt-0">
+                            <div class="md:hidden text-lg text-gray-600 leading-7 font-semibold">
+                                <a href="#" class="hover:underline" title="How to handle these API results?">How to handle these API results?</a>
+                            </div>
+
+                            <div class="mt-2 md:mt-0 text-sm text-gray-500 content-toggle">
+                                Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                            </div>
+
+                            <a href="https://laracasts.com">
+                                <div class="mt-3 flex items-center text-gray-500 text-xs">
+                                    <a href="#" class="uppercase text-blue-500 font-bold hover:underline">StevenPss</a>
+                                    <p class="ml-1">replied <span class="font-bold hover:underline"><a href="#">2 minutes ago</a></span></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div><!--end of conversation div-->
+            </div><!--end of conversation list-->
+
+
+
+            <!--conversation list-->
+            <div class="bg-white overflow-hidden sm:rounded-lg border border-gray-200 rounded-lg mb-2">
+                <!--conversation div-->
+                <div class="bg-gray-200 bg-opacity-25 ">
+                    <div class="p-6 border-gray-200">
+                        <div class="flex justify-between items-center">
+
+                            <div class="flex items-center">
+                                <img src="https://i.pinimg.com/280x280_RS/4f/e7/61/4fe7612bbe4b06d30f2182ba47a73403.jpg" class="w-13 h-12 rounded-lg" alt="">
+
+                                <div class="md:hidden ml-4 text-sm text-gray-600 leading-7 font-semibold">
+                                    <a href="#" class="hover:underline">StevenPss</a>
+                                </div>
+
+                                <div class="text-lg hidden ml-7 md:block text-gray-600 leading-7 font-semibold">
+                                    <a href="#" class="hover:underline" title="How to handle these API results?">How to handle these API results?</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="flex">
+                                    <ul class="flex items-center text-xs text-gray-400 mr-2 bg-gray-100 rounded-full px-2">
+                                        <li class="hidden md:block"><i class="fas fa-eye"></i> 25</li>
+                                        <li class="md:ml-4"><i class="fas fa-comment"></i> 50</li>
+                                    </ul>
+
+                                    <a href="#" class="uppercase text-orange-400 border-orange-400 font-bold rounded-full hover:bg-orange-400 md:px-5 px-4 py-1 border hover:text-white transition duration-300 ease-in-out" style="font-size: 0.63rem;">
+                                        Laravel
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md:ml-20 mt-8 md:mt-0">
+                            <div class="md:hidden text-lg text-gray-600 leading-7 font-semibold">
+                                <a href="#" class="hover:underline" title="How to handle these API results?">How to handle these API results?</a>
+                            </div>
+
+                            <div class="mt-2 md:mt-0 text-sm text-gray-500 content-toggle">
+                                Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                            </div>
+
+                            <a href="https://laracasts.com">
+                                <div class="mt-3 flex items-center text-gray-500 text-xs">
+                                    <a href="#" class="uppercase text-blue-500 font-bold hover:underline">StevenPss</a>
+                                    <p class="ml-1">replied <span class="font-bold hover:underline"><a href="#">2 minutes ago</a></span></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div><!--end of conversation div-->
+            </div><!--end of conversation list-->
+
+
+
+            <!--conversation list-->
+            <div class="bg-white overflow-hidden sm:rounded-lg border border-gray-200 rounded-lg mb-2">
+                <!--conversation div-->
+                <div class="bg-gray-200 bg-opacity-25 ">
+                    <div class="p-6 border-gray-200">
+                        <div class="flex justify-between items-center">
+
+                            <div class="flex items-center">
+                                <img src="https://i.pinimg.com/280x280_RS/4f/e7/61/4fe7612bbe4b06d30f2182ba47a73403.jpg" class="w-13 h-12 rounded-lg" alt="">
+
+                                <div class="md:hidden ml-4 text-sm text-gray-600 leading-7 font-semibold">
+                                    <a href="#" class="hover:underline">StevenPss</a>
+                                </div>
+
+                                <div class="text-lg hidden ml-7 md:block text-gray-600 leading-7 font-semibold">
+                                    <a href="#" class="hover:underline" title="How to handle these API results?">How to handle these API results?</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="flex">
+                                    <ul class="flex items-center text-xs text-gray-400 mr-2 bg-gray-100 rounded-full px-2">
+                                        <li class="hidden md:block"><i class="fas fa-eye"></i> 25</li>
+                                        <li class="md:ml-4"><i class="fas fa-comment"></i> 50</li>
+                                    </ul>
+
+                                    <a href="#" class="uppercase text-orange-400 border-orange-400 font-bold rounded-full hover:bg-orange-400 md:px-5 px-4 py-1 border hover:text-white transition duration-300 ease-in-out" style="font-size: 0.63rem;">
+                                        Laravel
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md:ml-20 mt-8 md:mt-0">
+                            <div class="md:hidden text-lg text-gray-600 leading-7 font-semibold">
+                                <a href="#" class="hover:underline" title="How to handle these API results?">How to handle these API results?</a>
+                            </div>
+
+                            <div class="mt-2 md:mt-0 text-sm text-gray-500 content-toggle">
+                                Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                            </div>
+
+                            <a href="https://laracasts.com">
+                                <div class="mt-3 flex items-center text-gray-500 text-xs">
+                                    <a href="#" class="uppercase text-blue-500 font-bold hover:underline">StevenPss</a>
+                                    <p class="ml-1">replied <span class="font-bold hover:underline"><a href="#">2 minutes ago</a></span></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div><!--end of conversation div-->
+            </div><!--end of conversation list-->
+
+
+
+            <!--conversation list-->
+            <div class="bg-white overflow-hidden sm:rounded-lg border border-gray-200 rounded-lg mb-2">
+                <!--conversation div-->
+                <div class="bg-gray-200 bg-opacity-25 ">
+                    <div class="p-6 border-gray-200">
+                        <div class="flex justify-between items-center">
+
+                            <div class="flex items-center">
+                                <img src="https://i.pinimg.com/280x280_RS/4f/e7/61/4fe7612bbe4b06d30f2182ba47a73403.jpg" class="w-13 h-12 rounded-lg" alt="">
+
+                                <div class="md:hidden ml-4 text-sm text-gray-600 leading-7 font-semibold">
+                                    <a href="#" class="hover:underline">StevenPss</a>
+                                </div>
+
+                                <div class="text-lg hidden ml-7 md:block text-gray-600 leading-7 font-semibold">
+                                    <a href="#" class="hover:underline" title="How to handle these API results?">How to handle these API results?</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="flex">
+                                    <ul class="flex items-center text-xs text-gray-400 mr-2 bg-gray-100 rounded-full px-2">
+                                        <li class="hidden md:block"><i class="fas fa-eye"></i> 25</li>
+                                        <li class="md:ml-4"><i class="fas fa-comment"></i> 50</li>
+                                    </ul>
+
+                                    <a href="#" class="uppercase text-orange-400 border-orange-400 font-bold rounded-full hover:bg-orange-400 md:px-5 px-4 py-1 border hover:text-white transition duration-300 ease-in-out" style="font-size: 0.63rem;">
+                                        Laravel
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md:ml-20 mt-8 md:mt-0">
+                            <div class="md:hidden text-lg text-gray-600 leading-7 font-semibold">
+                                <a href="#" class="hover:underline" title="How to handle these API results?">How to handle these API results?</a>
+                            </div>
+
+                            <div class="mt-2 md:mt-0 text-sm text-gray-500 content-toggle">
+                                Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                            </div>
+
+                            <a href="https://laracasts.com">
+                                <div class="mt-3 flex items-center text-gray-500 text-xs">
+                                    <a href="#" class="uppercase text-blue-500 font-bold hover:underline">StevenPss</a>
+                                    <p class="ml-1">replied <span class="font-bold hover:underline"><a href="#">2 minutes ago</a></span></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div><!--end of conversation div-->
+            </div><!--end of conversation list-->
+
+
+
+            
+
+
     </div>
 
-    <div class="mt-6 text-gray-500">
-        Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is designed
-        to help you build your application using a development environment that is simple, powerful, and enjoyable. We believe
-        you should love expressing your creativity through programming, so we have spent time carefully crafting the Laravel
-        ecosystem to be a breath of fresh air. We hope you love it.
-    </div>
 </div>
 
-<div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2">
-    <div class="p-6">
-        <div class="flex items-center">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://laravel.com/docs">Documentation</a></div>
-        </div>
 
-        <div class="ml-12">
-            <div class="mt-2 text-sm text-gray-500">
-                Laravel has wonderful documentation covering every aspect of the framework. Whether you're new to the framework or have previous experience, we recommend reading all of the documentation from beginning to end.
-            </div>
 
-            <a href="https://laravel.com/docs">
-                <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
-                        <div>Explore the documentation</div>
+@section('css')
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <style>
+        .search-form {
+            background-image: url('https://laracasts.com/images/icons/search.svg');
+            background-repeat: no-repeat;
+            background-position: 16px 13.5px;
+            padding-left: 20px;
+        }
+    </style>
+@endsection
 
-                        <div class="ml-1 text-indigo-500">
-                            <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                        </div>
-                </div>
-            </a>
-        </div>
-    </div>
+@section('scripts')
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            //Latest
+            const btnForumLatest = document.querySelector('#btn-forum-latest')
+            const forumMenuLatest = document.querySelector('#forum-menu-latest')
+            //All
+            const btnForumAll = document.querySelector('#btn-forum-all')
+            const forumMenuAll = document.querySelector('#forum-menu-all')
+            //btn content hide/show
+            const btnContentHide = document.querySelector('#btn-content-hide')
+            const btnContentShow = document.querySelector('#btn-content-show')
+            
+            const contentToggle = document.querySelectorAll('.content-toggle')
 
-    <div class="p-6 border-t border-gray-200 md:border-t-0 md:border-l">
-        <div class="flex items-center">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://laracasts.com">Laracasts</a></div>
-        </div>
+            btnForumLatest.addEventListener('click', () => {
+                forumMenuLatest.classList.toggle('hidden')
+            })
 
-        <div class="ml-12">
-            <div class="mt-2 text-sm text-gray-500">
-                Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-            </div>
+            btnForumAll.addEventListener('click', () => {
+                forumMenuAll.classList.toggle('hidden')
+            })
 
-            <a href="https://laracasts.com">
-                <div class="mt-3 flex items-center text-sm font-semibold text-indigo-700">
-                        <div>Start watching Laracasts</div>
+            btnContentHide.addEventListener('click', () => {
+                // loop through all contentToggle
+                for (const content of contentToggle) {
+                    content.classList.add('hidden')
+                }
+                btnContentShow.classList.remove('bg-gray-200','py-1', 'px-1', 'rounded')
+                btnContentHide.classList.add('bg-gray-200','py-1', 'px-1', 'rounded')
+            })
 
-                        <div class="ml-1 text-indigo-500">
-                            <svg viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                        </div>
-                </div>
-            </a>
-        </div>
-    </div>
-
-    <div class="p-6 border-t border-gray-200">
-        <div class="flex items-center">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold"><a href="https://tailwindcss.com/">Tailwind</a></div>
-        </div>
-
-        <div class="ml-12">
-            <div class="mt-2 text-sm text-gray-500">
-                Laravel Jetstream is built with Tailwind, an amazing utility first CSS framework that doesn't get in your way. You'll be amazed how easily you can build and maintain fresh, modern designs with this wonderful framework at your fingertips.
-            </div>
-        </div>
-    </div>
-
-    <div class="p-6 border-t border-gray-200 md:border-l">
-        <div class="flex items-center">
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-400"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-            <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">Authentication</div>
-        </div>
-
-        <div class="ml-12">
-            <div class="mt-2 text-sm text-gray-500">
-                Authentication and registration views are included with Laravel Jetstream, as well as support for user email verification and resetting forgotten passwords. So, you're free to get started what matters most: building your application.
-            </div>
-        </div>
-    </div>
-</div>
+            btnContentShow.addEventListener('click', () => {
+                // loop through all contentToggle
+                for (const content of contentToggle) {
+                    content.classList.remove('hidden')
+                }
+                btnContentShow.classList.add('bg-gray-200','py-1', 'px-1', 'rounded')
+                btnContentHide.classList.remove('bg-gray-200','py-1', 'px-1', 'rounded')
+            })
+        })
+    </script>
+@endsection
