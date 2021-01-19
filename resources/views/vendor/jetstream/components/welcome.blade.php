@@ -64,7 +64,7 @@
                             </button>
                         </div>
                         
-                        <div id="forum-menu-latest" class="hidden origin-top-left absolute left-0 mt-2 w-52 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                        <div id="forum-menu-latest" class="hidden origin-top-left absolute left-0 border mt-2 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                             <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Latest</a>
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Popular This Week</a>
@@ -87,11 +87,11 @@
                             </button>
                         </div>
                     
-                        <div id="forum-menu-all" class="hidden origin-top-left absolute left-0 mt-2 w-52 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                        <div id="forum-menu-all" class="hidden origin-top-left absolute left-0 mt-2 w-32 border overflow-y-auto h-96 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                             <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                                
-
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Test</a>
+                                @foreach ($channels as $channel)
+                                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">{{ $channel->name }}</a>
+                                @endforeach
                             </div>
                         </div>
                     </div>
