@@ -40,6 +40,7 @@
 
                         <div class="flex flex-col flex-col-reverse md:flex-row mx-auto" style="max-width: 1070px;">
                             <x-sidebar/>
+                            <x-modal/>
                         </div>
                     
                         <!--forum main-->
