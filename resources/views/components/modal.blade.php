@@ -20,7 +20,7 @@
                     <div class="flex items-center">
                         
                         <div>
-                            <select name="channels" class="focus:outline-none border rounded-md text-xs px-2 py-1 bg-white mr-3">
+                            <select name="channel" class="focus:outline-none border rounded-md text-xs px-2 py-1 bg-white mr-3">
                                 <!-- The following line makes a placeholder -->
                                 <option value="" disabled selected hidden>Select Channel</option>
                                 @foreach ($channels as $channel)
@@ -63,7 +63,7 @@
                     <button type="button" id="btn-close-discussion" class="mt-3 bg-gray-100 w-full inline-flex justify-center rounded-full shadow-sm px-6 py-2 text-base font-bold text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm uppercase">
                         Cancel
                     </button>
-                    <button type="button" class="w-full inline-flex justify-center rounded-full shadow-sm px-6 py-2 bg-blue-500 text-base font-bold text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm uppercase">
+                    <button type="submit" class="w-full inline-flex justify-center rounded-full shadow-sm px-6 py-2 bg-blue-500 text-base font-bold text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm uppercase">
                         Post
                     </button>
                 </div>
