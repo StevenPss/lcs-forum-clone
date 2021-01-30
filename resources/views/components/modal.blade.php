@@ -1,8 +1,9 @@
 <!--modal-->
 <div id="discussion-modal-toggle" class="fixed z-10 inset-x-0 overflow-y-auto hidden">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-      <form action="" method="post">
-        <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+      <form action="{{ route('discussion.store') }}" method="post">
+          @csrf
+          <div class="fixed inset-0 transition-opacity" aria-hidden="true">
             <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
           </div>
       
@@ -23,7 +24,7 @@
                                 <!-- The following line makes a placeholder -->
                                 <option value="" disabled selected hidden>Select Channel</option>
                                 @foreach ($channels as $channel)
-                                    <option value="{{ $channel->name }}">{{ $channel->name }}</option>
+                                    <option value="{{ $channel->id }}">{{ $channel->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -36,8 +37,9 @@
                 </div>
     
                 <hr class="mt-3 mb-6">
-                <div class="flex">
-                    <textarea name="body_in_markdown" id="body_in_markdown" class="focus:outline-none" cols="100" rows="8" placeholder="What's on your mind?"></textarea>
+                <div class="flex flex-col">
+                    <input id="content" type="hidden" class="focus:outline-none" name="content" placeholder="What's on your mind?">
+                    <trix-editor input="content"></trix-editor>
                 </div>
     
                 <div class="sm:flex sm:justify-between">
@@ -71,7 +73,6 @@
     </div>
 </div>
 <!--end of modal-->
-
 
 @section('scripts')
   <script>
