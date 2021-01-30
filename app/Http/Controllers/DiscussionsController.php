@@ -26,7 +26,9 @@ class DiscussionsController extends Controller
      */
     public function index()
     {
-        return view('discussions.index');
+        return view('discussions.index',[
+            'discussions' => Discussion::all()
+        ]);
     }
 
     /**
@@ -66,9 +68,11 @@ class DiscussionsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Discussion $discussion)
     {
-        //
+        return view('discussions.show', [
+            'discussion' => $discussion
+        ]);
     }
 
     /**

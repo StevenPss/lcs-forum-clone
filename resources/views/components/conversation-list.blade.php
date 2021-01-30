@@ -1,19 +1,24 @@
+<?php
+    use Illuminate\Support\Str;
+
+    $truncated_content = Str::limit($content, 250);
+?>
+
 <!--conversation list-->
 <div class="bg-white overflow-hidden sm:rounded-lg border border-gray-200 rounded-lg mb-2">
     <!--conversation div-->
     <div class="bg-gray-200 bg-opacity-25 ">
         <div class="p-6 border-gray-200">
             <div class="flex justify-between items-center">
-
                 <div class="flex items-center">
-                    <img src="https://i.pinimg.com/280x280_RS/4f/e7/61/4fe7612bbe4b06d30f2182ba47a73403.jpg" class="w-13 h-12 rounded-lg" alt="">
+                    <img src="{{ Gravatar::src($gravatar) }}" class="w-13 h-12 rounded-lg" alt="">
 
                     <div class="md:hidden ml-4 text-sm text-gray-600 leading-7 font-semibold">
-                        <a href="#" class="hover:underline">StevenPss</a>
+                        <a href="#" class="hover:underline">{{ $username }}</a>
                     </div>
 
                     <div class="text-lg hidden ml-7 md:block text-gray-600 leading-7 font-semibold">
-                        <a href="#" class="hover:underline" title="How to handle these API results?">How to handle these API results?</a>
+                        <a href="{{ route('discussion.show', $slug) }}" class="hover:underline" title="{{ $title }}?">{{ $title }}?</a>
                     </div>
                 </div>
                 
@@ -33,17 +38,17 @@
 
             <div class="md:ml-20 mt-8 md:mt-0">
                 <div class="md:hidden text-lg text-gray-600 leading-7 font-semibold">
-                    <a href="#" class="hover:underline" title="How to handle these API results?">How to handle these API results?</a>
+                    <a href="{{ route('discussion.show', $slug) }}" class="hover:underline" title="{{ $title }}?">{{ $title }}?</a>
                 </div>
 
                 <div class="mt-2 md:mt-0 text-sm text-gray-500 content-toggle">
-                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                    {!! $truncated_content !!}
                 </div>
 
                 <a href="https://laracasts.com">
                     <div class="mt-3 flex items-center text-gray-500 text-xs">
-                        <a href="#" class="uppercase text-blue-500 font-bold hover:underline">StevenPss</a>
-                        <p class="ml-1">replied <span class="font-bold hover:underline"><a href="#">2 minutes ago</a></span></p>
+                        <a href="#" class="uppercase text-blue-500 font-bold hover:underline">{{ $username }}</a>
+                        <p class="ml-1">replied <span class="font-bold hover:underline"><a href="#">{{ \Carbon\Carbon::parse($date)->diffForhumans() }}</a></span></p>
                     </div>
                 </a>
             </div>
