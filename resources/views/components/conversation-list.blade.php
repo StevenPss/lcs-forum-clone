@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="mt-2 md:mt-0 text-sm text-gray-500 content-toggle">
-                    {!! $truncated_content !!}
+                    {!! $truncated_content !!} 
                 </div>
 
                 <a href="https://laracasts.com">

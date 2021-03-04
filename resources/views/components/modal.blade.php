@@ -29,9 +29,11 @@
                             </select>
                         </div>
 
-                        <div class="flex-shrink-0">
-                            <img class="h-8 w-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-                        </div>
+                        @auth
+                            <div class="flex-shrink-0">
+                                <img class="h-8 w-8 rounded-full" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                            </div>
+                        @endauth
 
                     </div>
                 </div>
