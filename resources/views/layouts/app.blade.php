@@ -133,6 +133,7 @@
                 const btnContentHide = document.querySelector('#btn-content-hide')
                 const btnContentShow = document.querySelector('#btn-content-show')
                 
+                
                 const contentToggle = document.querySelectorAll('.content-toggle')
     
                 btnForumLatest.addEventListener('click', () => {
