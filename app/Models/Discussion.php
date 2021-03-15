@@ -11,7 +11,16 @@ class Discussion extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * replies belonging to a specific discussion
+     * @return replies
+     */
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
     }
 
     /**
