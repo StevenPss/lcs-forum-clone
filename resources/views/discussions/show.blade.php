@@ -7,14 +7,21 @@
                 <div class="p-4 border-gray-200">
                     <div class="flex justify-between items-center">
                         <div class="flex items-center text-xs text-gray-500 hidden md:block">
-                            <p><span class="font-bold">{{ $discussion->user->name }}</span> started this conversation <span>{{ \Carbon\Carbon::parse($discussion->created_at)->diffForhumans() }}</span>. 2 people have replied.</p>
+                            <p><span class="font-bold">{{ $discussion->user->name }}</span> started this conversation <span>{{ \Carbon\Carbon::parse($discussion->created_at)->diffForhumans() }}</span>. 
+                            @if ($discussion->replies()->count() > 1)
+                                {{ $discussion->replies()->count() }} people have replied.
+                            @elseif($discussion->replies()->count() == 0)
+                                {{ $discussion->replies()->count() }} replies.
+                            @else
+                                {{ $discussion->replies()->count() }} person has replied.
+                            @endif </p>
                         </div>
                         
                         <div class="flex">
                             <div class="flex md:justify-between">
                                 <ul class="flex items-center text-xs text-gray-400 mr-2 bg-gray-100 rounded-full px-2">
                                     <li class="md:mr-4"><i class="fas fa-eye"></i> 25</li>
-                                    <li class="md:ml-4"><i class="fas fa-comment"></i> 50</li>
+                                    <li class="md:ml-4"><i class="fas fa-comment"></i> {{ $discussion->replies()->count() }}</li>
                                 </ul>
 
                                 <a href="#" class="uppercase text-orange-400 border-orange-400 font-bold rounded-full hover:bg-orange-400 md:px-5 px-4 py-1 border hover:text-white transition duration-300 ease-in-out" style="font-size: 0.63rem;">
@@ -30,7 +37,7 @@
         <!--conversation list-->
         <div class="bg-white overflow-hidden sm:rounded-lg border border-gray-200 rounded-lg mb-2">
             <!--conversation div-->
-            <div class="bg-gray-200 bg-opacity-25 ">
+            <div class="bg-gray-200 bg-opacity-25">
                 <div class="p-6 border-gray-200">
                     <div class="flex justify-between items-center">
                         <div class="flex items-center">

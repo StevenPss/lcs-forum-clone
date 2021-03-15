@@ -26,7 +26,7 @@
                     <div class="flex">
                         <ul class="flex items-center text-xs text-gray-400 mr-2 bg-gray-100 rounded-full px-2">
                             <li class="hidden md:block"><i class="fas fa-eye"></i> 25</li>
-                            <li class="md:ml-4"><i class="fas fa-comment"></i> 50</li>
+                            <li class="md:ml-4"><i class="fas fa-comment"></i> {{ $replies }}</li>
                         </ul>
 
                         <a href="#" class="uppercase text-orange-400 border-orange-400 font-bold rounded-full hover:bg-orange-400 md:px-5 px-4 py-1 border hover:text-white transition duration-300 ease-in-out" style="font-size: 0.63rem;">

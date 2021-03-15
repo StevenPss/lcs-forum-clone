@@ -8,6 +8,7 @@
                 gravatar="{{ $discussion->user->email }}"
                 content="{{ $discussion->content }}"
                 date="{{ $discussion->created_at }}"
+                replies="{{ $discussion->replies()->count() }}"
             />
         @endforeach
     @endsection
