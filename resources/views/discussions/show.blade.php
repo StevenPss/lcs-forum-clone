@@ -86,45 +86,151 @@
 
         <!--conversation list replies-->
         @foreach ($discussion->replies()->paginate(2) as $reply)
-            <div class="bg-white overflow-hidden sm:rounded-lg border border-gray-200 rounded-lg mb-2">
-                <!--conversation div-->
-                <div class="bg-gray-200 bg-opacity-25 ">
-                    <div class="p-6 border-gray-200">
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center">
-                                <img src="{{ Gravatar::src($reply->owner->email) }}" class="w-13 h-12 rounded-lg" alt="">
+            @if (isset($discussion->bestReply->id))
+                @if ($discussion->bestReply->id === $reply->id)
+                    <div class="bg-white overflow-hidden sm:rounded-lg border border-gray-200 rounded-lg mb-2">
+                        <!--conversation div-->
+                        <div class="bg-blue-500 bg-opacity-25 ">
+                            <div class="p-6 border border-blue-400">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <img src="{{ Gravatar::src($reply->owner->email) }}" class="w-13 h-12 rounded-lg" alt="">
 
-                                <div class="flex flex-col">
-                                    <div class="pl-7 mb-4 text-sm text-gray-600 leading-7 font-semibold">
-                                        <a href="#" class="hover:underline">{{ $reply->owner->name }}</a>
-                                        <p class="text-xs">posted <span class="font-bold hover:underline"><a href="#">{{ \Carbon\Carbon::parse($reply->created_at)->diffForhumans() }}</a></span></p>
+                                        <div class="flex flex-col">
+                                            <div class="pl-7 mb-4 text-sm text-gray-600 leading-7 font-semibold">
+                                                <a href="#" class="hover:underline">{{ $reply->owner->name }}</a>
+                                                <p class="text-xs">posted <span class="font-bold hover:underline"><a href="#">{{ \Carbon\Carbon::parse($reply->created_at)->diffForhumans() }}</a></span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex">
+                                        <div class="flex md:flex-row flex-col">
+                                            <span title="Did this reply answer your question?" class="uppercase text-white font-bold rounded-full md:px-5 px-4 py-1 border transition duration-300 ease-in-out md:mr-2 mb-2" style="font-size: 0.63rem;background-image: linear-gradient(70deg, rgb(33, 200, 246) 21%, rgb(99, 123, 255) 117%);">
+                                                Best Answer
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="flex">
-                                <div class="flex">
-                                    <a href="#" class="uppercase text-gray-400 border-gray-400 font-bold rounded-full hover:bg-gray-400 md:px-5 px-4 py-1 border hover:text-white transition duration-300 ease-in-out" style="font-size: 0.63rem;">
-                                        Zero
+
+                                <div class="md:ml-20 mt-8 md:mt-0">
+                                    <div class="mt-2 md:mt-0 text-sm text-gray-500 content-toggle">
+                                        {!! $discussion->bestReply->content !!}
+                                    </div>
+
+                                    <a href="https://laracasts.com">
+                                        <div class="mt-3 flex items-center text-gray-500 text-xs">
+                                            <a href="#" class="uppercase text-blue-500 font-bold hover:underline">Reply</a>
+                                        </div>
                                     </a>
                                 </div>
                             </div>
-                        </div>
+                        </div><!--end of conversation div-->
+                    </div>
+                @else
+                    <div class="bg-white overflow-hidden sm:rounded-lg border border-gray-200 rounded-lg mb-2">
+                        <!--conversation div-->
+                        <div class="bg-gray-200 bg-opacity-25 ">
+                            <div class="p-6 border-gray-200">
+                                <div class="flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <img src="{{ Gravatar::src($reply->owner->email) }}" class="w-13 h-12 rounded-lg" alt="">
 
-                        <div class="md:ml-20 mt-8 md:mt-0">
-                            <div class="mt-2 md:mt-0 text-sm text-gray-500 content-toggle">
-                                {!! $reply->content !!}
+                                        <div class="flex flex-col">
+                                            <div class="pl-7 mb-4 text-sm text-gray-600 leading-7 font-semibold">
+                                                <a href="#" class="hover:underline">{{ $reply->owner->name }}</a>
+                                                <p class="text-xs">posted <span class="font-bold hover:underline"><a href="#">{{ \Carbon\Carbon::parse($reply->created_at)->diffForhumans() }}</a></span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex">
+                                        <div class="flex md:flex-row flex-col">
+                                            <a href="#" class="uppercase text-gray-400 border-gray-400 font-bold rounded-full hover:bg-gray-400 md:px-5 px-4 py-1 border hover:text-white transition duration-300 ease-in-out md:mr-2 mb-2" style="font-size: 0.63rem;">
+                                                Zero
+                                            </a>
+                                            @if (auth()->user()->id === $discussion->user_id)
+                                                <form action="{{ route('discussion.best-reply', [
+                                                    'discussion' => $discussion->slug,
+                                                    'reply' => $reply->id
+                                                ]) }}" method="post">
+                                                    @csrf
+                                                    <button type="submit" class="uppercase text-green-400 border-green-400 font-bold rounded-full hover:bg-green-400 md:px-5 px-4 py-1 border hover:text-white transition duration-300 ease-in-out mb-2" style="font-size: 0.63rem;">
+                                                        Mark as best
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="md:ml-20 mt-8 md:mt-0">
+                                    <div class="mt-2 md:mt-0 text-sm text-gray-500 content-toggle">
+                                        {!! $reply->content !!}
+                                    </div>
+
+                                    <a href="https://laracasts.com">
+                                        <div class="mt-3 flex items-center text-gray-500 text-xs">
+                                            <a href="#" class="uppercase text-blue-500 font-bold hover:underline">Reply</a>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div><!--end of conversation div-->
+                    </div>
+                @endif
+                @else
+                <div class="bg-white overflow-hidden sm:rounded-lg border border-gray-200 rounded-lg mb-2">
+                    <!--conversation div-->
+                    <div class="bg-gray-200 bg-opacity-25 ">
+                        <div class="p-6 border-gray-200">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <img src="{{ Gravatar::src($reply->owner->email) }}" class="w-13 h-12 rounded-lg" alt="">
+
+                                    <div class="flex flex-col">
+                                        <div class="pl-7 mb-4 text-sm text-gray-600 leading-7 font-semibold">
+                                            <a href="#" class="hover:underline">{{ $reply->owner->name }}</a>
+                                            <p class="text-xs">posted <span class="font-bold hover:underline"><a href="#">{{ \Carbon\Carbon::parse($reply->created_at)->diffForhumans() }}</a></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex">
+                                    <div class="flex md:flex-row flex-col">
+                                        <a href="#" class="uppercase text-gray-400 border-gray-400 font-bold rounded-full hover:bg-gray-400 md:px-5 px-4 py-1 border hover:text-white transition duration-300 ease-in-out md:mr-2 mb-2" style="font-size: 0.63rem;">
+                                            Zero
+                                        </a>
+                                        @if (auth()->user()->id === $discussion->user_id)
+                                            <form action="{{ route('discussion.best-reply', [
+                                                'discussion' => $discussion->slug,
+                                                'reply' => $reply->id
+                                            ]) }}" method="post">
+                                                @csrf
+                                                <button type="submit" class="uppercase text-green-400 border-green-400 font-bold rounded-full hover:bg-green-400 md:px-5 px-4 py-1 border hover:text-white transition duration-300 ease-in-out mb-2" style="font-size: 0.63rem;">
+                                                    Mark as best
+                                                </button>
+                                            </form>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
 
-                            <a href="https://laracasts.com">
-                                <div class="mt-3 flex items-center text-gray-500 text-xs">
-                                    <a href="#" class="uppercase text-blue-500 font-bold hover:underline">Reply</a>
+                            <div class="md:ml-20 mt-8 md:mt-0">
+                                <div class="mt-2 md:mt-0 text-sm text-gray-500 content-toggle">
+                                    {!! $reply->content !!}
                                 </div>
-                            </a>
+
+                                <a href="https://laracasts.com">
+                                    <div class="mt-3 flex items-center text-gray-500 text-xs">
+                                        <a href="#" class="uppercase text-blue-500 font-bold hover:underline">Reply</a>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                </div><!--end of conversation div-->
-            </div>
+                    </div><!--end of conversation div-->
+                </div>
+            @endif
         @endforeach
         <!--end of conversation list replies-->
 
