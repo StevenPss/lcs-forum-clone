@@ -15,6 +15,14 @@
                                         </a>
                                     </div>
                                 @endif
+                                @if ($notification->type === 'App\Notifications\MarkAsBestReply')
+                                    <div class="flex justify-between">
+                                        <div>Your reply to discussion - <strong>{{ $notification->data['discussion']['slug'] }}</strong> was marked as best reply.</div>
+                                        <a href="{{ route('discussion.show', $notification->data['discussion']['slug']) }}" class="bg-blue-400 inline-flex justify-center rounded-xl px-2 py-1 text-sm font-bold text-white hover:bg-blue-500 focus:outline-none" style="box-shadow: rgb(215, 232, 253) 0px 4px 10px 1px;">
+                                            View Discussion 
+                                        </a>
+                                    </div>
+                                @endif
                             </li>
                         @endforeach
                     </ul>

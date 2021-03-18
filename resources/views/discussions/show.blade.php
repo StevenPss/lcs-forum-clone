@@ -149,17 +149,19 @@
                                             <a href="#" class="uppercase text-gray-400 border-gray-400 font-bold rounded-full hover:bg-gray-400 md:px-5 px-4 py-1 border hover:text-white transition duration-300 ease-in-out md:mr-2 mb-2" style="font-size: 0.63rem;">
                                                 Zero
                                             </a>
-                                            @if (auth()->user()->id === $discussion->user_id)
-                                                <form action="{{ route('discussion.best-reply', [
-                                                    'discussion' => $discussion->slug,
-                                                    'reply' => $reply->id
-                                                ]) }}" method="post">
-                                                    @csrf
-                                                    <button type="submit" class="uppercase text-green-400 border-green-400 font-bold rounded-full hover:bg-green-400 md:px-5 px-4 py-1 border hover:text-white transition duration-300 ease-in-out mb-2" style="font-size: 0.63rem;">
-                                                        Mark as best
-                                                    </button>
-                                                </form>
-                                            @endif
+                                            @auth
+                                                @if (auth()->user()->id === $discussion->user_id)
+                                                    <form action="{{ route('discussion.best-reply', [
+                                                        'discussion' => $discussion->slug,
+                                                        'reply' => $reply->id
+                                                    ]) }}" method="post">
+                                                        @csrf
+                                                        <button type="submit" class="uppercase text-green-400 border-green-400 font-bold rounded-full hover:bg-green-400 md:px-5 px-4 py-1 border hover:text-white transition duration-300 ease-in-out mb-2" style="font-size: 0.63rem;">
+                                                            Mark as best
+                                                        </button>
+                                                    </form>
+                                                @endif
+                                            @endauth
                                         </div>
                                     </div>
                                 </div>
