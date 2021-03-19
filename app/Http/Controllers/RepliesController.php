@@ -42,8 +42,11 @@ class RepliesController extends Controller
             'discussion_id' => $discussion->id
         ]);
 
-        //send notification to the author of the discussion
-        $discussion->user->notify(new NewReply($discussion));
+        
+        if ($discussion->user->id != auth()->user()->id) {
+            //send notification to the author of the discussion
+            $discussion->user->notify(new NewReply($discussion));
+        }
 
         session()->flash('success', 'Reply added successfully!');
 

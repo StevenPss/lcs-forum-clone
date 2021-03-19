@@ -86,7 +86,7 @@
                                             <div id="forum-menu-all" class="z-10 hidden origin-top-left absolute left-0 mt-2 w-32 border overflow-y-auto h-96 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                                                 <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                                                     @foreach ($channels as $channel)
-                                                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">{{ $channel->name }}</a>
+                                                        <a href="{{ route('discussion.index') }}?channel={{ $channel->slug }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">{{ $channel->name }}</a>
                                                     @endforeach
                                                 </div>
                                             </div>

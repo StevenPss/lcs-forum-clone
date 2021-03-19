@@ -11,5 +11,6 @@
                 replies="{{ $discussion->replies()->count() }}"
             />
         @endforeach
+        {{ $discussions->appends(['channel' => request()->query('channel')])->links() }}
     @endsection
 </x-app-layout>

@@ -16,6 +16,23 @@ class Discussion extends Model
     }
 
     /**
+     * filter content by channels
+     * @param $builder current query builder instance
+     */
+    public function scopeFilterByChannels($builder)
+    {
+        if (request()->query('channel')) {
+            $channel = Channel::where('slug', request()->query('channel'))->first();
+
+            if ($channel) {
+                return $builder->where('channel_id', $channel->id);
+            }
+            return $builder;
+        }
+        return $builder;
+    }
+
+    /**
      * replies belonging to a specific discussion
      * @return replies
      */
@@ -34,7 +51,9 @@ class Discussion extends Model
             'reply_id' => $reply->id
         ]);
 
-        $reply->owner->notify(new MarkAsBestReply($reply->discussion));
+        if ($reply->owner->id != $this->user->id) {
+            $reply->owner->notify(new MarkAsBestReply($reply->discussion));
+        }
     }
 
     /**
