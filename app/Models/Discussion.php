@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\MarkAsBestReply;
 
 class Discussion extends Model
 {
@@ -12,6 +13,23 @@ class Discussion extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    /**
+     * filter content by channels
+     * @param $builder current query builder instance
+     */
+    public function scopeFilterByChannels($builder)
+    {
+        if (request()->query('channel')) {
+            $channel = Channel::where('slug', request()->query('channel'))->first();
+
+            if ($channel) {
+                return $builder->where('channel_id', $channel->id);
+            }
+            return $builder;
+        }
+        return $builder;
     }
 
     /**
@@ -29,9 +47,13 @@ class Discussion extends Model
      * */
     public function markAsBestReply(Reply $reply)
     {
-        return $this->update([
+        $this->update([
             'reply_id' => $reply->id
         ]);
+
+        if ($reply->owner->id != $this->user->id) {
+            $reply->owner->notify(new MarkAsBestReply($reply->discussion));
+        }
     }
 
     /**

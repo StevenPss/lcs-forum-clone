@@ -55,7 +55,11 @@
                                 </button>
                             @else
                                 <button class="flex items-center text-sm font-medium text-gray-300 hover:text-white hover:border-gray-300 focus:outline-none focus:text-white focus:border-gray-300 transition duration-150 ease-in-out">
-                                    <div>{{ Auth::user()->name }}</div>
+                                    <div>{{ Auth::user()->name }}
+                                        @if (auth()->user()->unreadNotifications->count() > 0)
+                                            <span class="bg-blue-400 px-1 text-white font-bold rounded">{{ auth()->user()->unreadNotifications->count() }}</span>
+                                        @endif
+                                    </div>
                                     
 
                                     <div class="ml-1">
@@ -72,6 +76,12 @@
                             <div class="block px-4 py-2 text-xs text-gray-400">
                                 {{ __('Manage Account') }}
                             </div>
+
+                            <x-jet-dropdown-link href="{{ route('user.notifications') }}">
+                                {{ __('Notifications') }} @if (auth()->user()->unreadNotifications->count() > 0)
+                                <span class="bg-blue-400 px-1 text-white font-bold rounded">{{ auth()->user()->unreadNotifications->count() }}</span>
+                                @endif
+                            </x-jet-dropdown-link>
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
