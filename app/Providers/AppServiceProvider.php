@@ -25,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('channels', Channel::all());
+        if (! $this->app->runningInConsole()) {
+            // App is not running in CLI context
+            // Do HTTP-specific stuff here
+            View::share('channels', Channel::all());
+        }
     }
 }
